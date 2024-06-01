@@ -4,7 +4,13 @@ import isAdmin, { person } from "../middleware/isAdmin.js";
 const router = Router();
 
 router.get("/", (req, res) => {
-  res.render("index", person[1]);
+  const name = req.query.name;
+  const lastname = req.query.lastname;
+  const user = {
+    name,
+    lastname,
+  };
+  res.render("index", { user: user });
 });
 
 router.get("/admin", isAdmin, (req, res) => {
@@ -14,9 +20,9 @@ router.get("/admin", isAdmin, (req, res) => {
 
 router
   .route("/users")
-  .get("/users", (req, res) => {
+  .get((req, res) => {
     let users = person;
-    res.render("users", { users, styles: "index.css" });
+    res.render("users", { users: users, styles: "styles.css" });
   })
   .post((req, res) => {
     const { email, password } = req.body;
