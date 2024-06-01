@@ -9,33 +9,39 @@ router.get("/", (req, res) => {
 
 router.get("/admin", isAdmin, (req, res) => {
   res.render("admin", person[0]);
-  next()
+  next();
 });
 
-router.get("/users", (req, res) => {
+router
+  .route("/users")
+  .get("/users", (req, res) => {
+    let users = person;
+    res.render("users", { users, styles: "index.css" });
+  })
+  .post((req, res) => {
+    const { email, password } = req.body;
+    let users = [];
+    const newUser = {
+      email,
+      password,
+    };
+    users.push(newUser);
+    res.status(201).json({ status: "success", payload: users });
+  });
 
-let users = person;
-
-  res.render("users", { users, styles: "index.css" });
-});
-
-let users = [];
-
-router.post("/users", (req, res) => {
-  const { email, password } = req.body;
-
-  const newUser = {
-    email,
-    password,
-  };
-
-  users.push(newUser);
-
-  res.status(201).json({ status: "success", payload: users });
-});
-
-router.get("/register", (req, res) => {
-  res.render("register");
-});
+router
+  .route("/register")
+  .get((req, res) => {
+    res.render("register", { hello: "Saludos" });
+  })
+  .post((req, res) => {
+    const { email, password } = req.body;
+    const newUser = {
+      email,
+      password,
+    };
+    users.push(newUser);
+    res.status(201).json({ status: "success", payload: users });
+  });
 
 export default router;
