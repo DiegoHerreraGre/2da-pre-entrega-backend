@@ -1,41 +1,20 @@
 import { Router } from "express";
+import isAdmin, { person } from "../middleware/isAdmin.js";
 
 const router = Router();
 
 router.get("/", (req, res) => {
-  const person = {
-    name: "Juan",
-    lastName: "Perez",
-  };
-
-  res.render("index", person);
+  res.render("index", person[1]);
 });
 
-router.get("/admin", (req, res) => {
-  const person = {
-    name: "Juan",
-    lastName: "Perez",
-    isAdmin: false,
-  };
-
-  res.render("admin", person);
+router.get("/admin", isAdmin, (req, res) => {
+  res.render("admin", person[0]);
+  next()
 });
 
 router.get("/users", (req, res) => {
-  let users = [
-    {
-      name: "Juan",
-      lastName: "Perez",
-    },
-    {
-      name: "Pedro",
-      lastName: "Sanchez",
-    },
-    {
-      name: "Ana",
-      lastName: "Diaz",
-    },
-  ];
+
+let users = person;
 
   res.render("users", { users, styles: "index.css" });
 });
