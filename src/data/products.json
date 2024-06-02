@@ -1,0 +1,52 @@
+
+[
+  {
+    "id": 1,
+    "nombre": "Laptop Gamer",
+    "precio": 1500,
+    "descripcion": "Laptop de alto rendimiento para juegos",
+    "imagen": "laptop_gamer.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Teclado Mecánico",
+    "precio": 100,
+    "descripcion": "Teclado mecánico retroiluminado",
+    "imagen": "teclado_mecanico.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Mouse Gamer",
+    "precio": 50,
+    "descripcion": "Mouse gamer con alta precisión y múltiples botones",
+    "imagen": "mouse_gamer.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Monitor 4K",
+    "precio": 300,
+    "descripcion": "Monitor 4K con tiempo de respuesta ultra rápido",
+    "imagen": "monitor_4k.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Auricular Gamer",
+    "precio": 100,
+    "descripcion": "Auricular gamer con sonido de alta calidad",
+    "imagen": "auricular_gamer.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Mouse Gamer",
+    "precio": 50,
+    "descripcion": "Mouse gamer con alta precisión y mltiples botones",
+    "imagen": "mouse_gamer.jpg"
+  },
+  {
+    "id": 7,
+    "nombre": "Teclado Mecánico",
+    "precio": 100,
+    "descripcion": "Teclado mecánico retroiluminado",
+    "imagen": "teclado_mecanico.jpg"
+  }
+]

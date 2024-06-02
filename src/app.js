@@ -1,10 +1,10 @@
 import express from "express";
+import routes from "./routes/index.js";
 import viewRoutes from "./routes/views.routes.js";
 import handlebars from "express-handlebars";
 import __dirname from "./dirname.js";
 import path from "path";
 import { Server } from "socket.io";
-
 const PORT = 8080;
 const app = express();
 
@@ -16,28 +16,18 @@ app.use(express.static("public"));
 app.engine("handlebars", handlebars.engine()); // Inicia el motor del la plantilla
 app.set("views", path.join(__dirname, "views")); // Indicamos que ruta se encuentras las vistas
 app.set("view engine", "handlebars"); // Indicamos con que motor vamos a utilizar las vistas
+app.use(express.static("public"));
 
 app.use("/", viewRoutes);
-
+app.use("/api", routes);
 
 const httpServer = app.listen(PORT, () => {
-  console.log(`Server on port ${PORT}`);
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
 
-let messages = [];
-let products = [];
+// Configuramos socket
+export const io = new Server(httpServer);
 
-
-const socketServer = new Server(httpServer);
-
-socketServer.on("connection", (socket) => {
-  console.log("Nuevo usuario conectado");
-  socket.on("message", (data) => {
-      messages.push(data);
-      socketServer.emit("messageLog", messages);
-  })
-
-  socket.on("newUser", (data) => {
-      socket.broadcast.emit("newUser", data);
-  })
+io.on("connection", (socket) => {
+  console.log("Nuevo usuario Conectado");
 });

@@ -1,47 +1,58 @@
 const socket = io();
+const productsList = document.getElementById("productsList");
+const addForm = document.getElementById("addForm");
+const deleteForm = document.getElementById("deleteForm");
 
-let user;
-let chatBox = document.getElementById("chatBox");
+// Agregar productos
+addForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const title = document.getElementById("title").value;
+  const price = document.getElementById("price").value;
+  const description = document.getElementById("description").value;
 
-Swal.fire({
-  title: "Indentificate",
-  input: "text",
-  text: "Ingresar el usuario para identificarte en el chat",
-  inputValidator: (value) => {
-    return !value && "Por favor ingrese el nombre de usuario";
-  },
-  allowOutsideClick: false,
-}).then((result) => {
-  user = result.value;
-  socket.emit("newUser", user);
-});
-
-chatBox.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    if (chatBox.value.trim().length > 0) {
-      socket.emit("message", { user: user, message: chatBox.value });
-      chatBox.value = "";
-    } else {
-      alert("Debe escribir al menos un carácter");
-    }
-  }
-});
-
-socket.on("messageLog", (data) => {
-  let messageLog = document.getElementById("messageLog");
-  let messages = "";
-  data.forEach((msg) => {
-    messages = messages + `${msg.user} dice: ${msg.message} </br>`;
+  await fetch("/realtimeproducts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ title, price, description }),
   });
 
-  messageLog.innerHTML = messages;
+  addForm.reset();
+});
+// Eliminar productos
+
+deleteForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const id = document.getElementById("id").value;
+  await fetch("/realtimeproducts", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id }),
+  });
+
+  deleteForm.reset();
 });
 
-socket.on("newUser", (data) => {
-  Swal.fire({
-    text: `Usuario ${data} conectado`,
-    toast: true,
-    position: "top-right",
-    timer: 3000,
+// Recibir productos
+
+socket.on("products", (data) => {
+  console.log(data);
+  // productsList.innerHTML = "";
+  data.forEach((product) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.style.width = "18rem";
+    card.innerHTML = `
+      <div class="card-body">
+        <h5 class="card-title">${product.title}</h5>
+        <p class="card-text">ID: ${product.id}</p>
+        <p class="card-text">${product.description}</p>
+        <p class="card-text">$${product.price}</p>
+      </div>
+    `;
+    productsList.appendChild(card);
   });
 });
