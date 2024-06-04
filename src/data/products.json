@@ -1,52 +1,59 @@
-
 [
   {
     "id": 1,
-    "nombre": "Laptop Gamer",
-    "precio": 1500,
-    "descripcion": "Laptop de alto rendimiento para juegos",
-    "imagen": "laptop_gamer.jpg"
-  },
-  {
-    "id": 2,
-    "nombre": "Teclado Mecánico",
-    "precio": 100,
-    "descripcion": "Teclado mecánico retroiluminado",
-    "imagen": "teclado_mecanico.jpg"
+    "title": "Producto 1",
+    "description": "test",
+    "price": "100",
+    "thumbnail": [],
+    "status": true
   },
   {
     "id": 3,
-    "nombre": "Mouse Gamer",
-    "precio": 50,
-    "descripcion": "Mouse gamer con alta precisión y múltiples botones",
-    "imagen": "mouse_gamer.jpg"
+    "title": "Producto 2",
+    "description": "Alguna cosa",
+    "price": "300",
+    "thumbnail": [],
+    "status": true
   },
   {
     "id": 4,
-    "nombre": "Monitor 4K",
-    "precio": 300,
-    "descripcion": "Monitor 4K con tiempo de respuesta ultra rápido",
-    "imagen": "monitor_4k.jpg"
+    "title": "Producto 30",
+    "description": "nada importante",
+    "price": "500",
+    "thumbnail": [],
+    "status": true
   },
   {
     "id": 5,
-    "nombre": "Auricular Gamer",
-    "precio": 100,
-    "descripcion": "Auricular gamer con sonido de alta calidad",
-    "imagen": "auricular_gamer.jpg"
+    "title": "Producto 8",
+    "description": "hola mundo",
+    "price": "400",
+    "thumbnail": [],
+    "status": true
   },
   {
     "id": 6,
-    "nombre": "Mouse Gamer",
-    "precio": 50,
-    "descripcion": "Mouse gamer con alta precisión y mltiples botones",
-    "imagen": "mouse_gamer.jpg"
+    "title": "producto nuevo",
+    "description": "nada más",
+    "price": "5000",
+    "thumbnail": [],
+    "status": true
   },
   {
     "id": 7,
-    "nombre": "Teclado Mecánico",
-    "precio": 100,
-    "descripcion": "Teclado mecánico retroiluminado",
-    "imagen": "teclado_mecanico.jpg"
+    "title": "producto nuevo 2",
+    "description": "nada más",
+    "price": "5000",
+    "thumbnail": [],
+    "status": true
+  },
+  {
+    "id": 7,
+    "title": "333",
+    "description": "333",
+    "price": "333",
+    "thumbnail": [],
+    "stock": "3333",
+    "status": true
   }
 ]

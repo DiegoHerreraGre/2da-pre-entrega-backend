@@ -1,7 +1,5 @@
-let products = [];
-
 import fs from "fs";
-
+let products = [];
 const pathFile = "./src/data/products.json";
 
 const addProduct = async (product) => {
@@ -14,9 +12,7 @@ const addProduct = async (product) => {
     description,
     price,
     thumbnail: thumbnail || [],
-    code,
     stock,
-    category,
     status: true,
   };
 
@@ -28,7 +24,7 @@ const addProduct = async (product) => {
 };
 
 const getProducts = async (limit) => {
-  const productsJson = await fs.promises.readFile(pathFile, "utf8");
+  const productsJson = await fs.promises.readFile(pathFile, "utf-8");
   const productsParse = JSON.parse(productsJson);
   products = productsParse || [];
 
@@ -40,7 +36,6 @@ const getProducts = async (limit) => {
 const getProductById = async (id) => {
   products = await getProducts();
   const product = products.find((p) => p.id === id);
-
   return product;
 };
 
@@ -64,7 +59,6 @@ const deleteProduct = async (id) => {
   if (!product) return false;
   products = products.filter((p) => p.id !== id);
   await fs.promises.writeFile(pathFile, JSON.stringify(products));
-
   return true;
 };
 

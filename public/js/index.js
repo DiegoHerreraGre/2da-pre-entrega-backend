@@ -3,7 +3,6 @@ const productsList = document.getElementById("productsList");
 const addForm = document.getElementById("addForm");
 const deleteForm = document.getElementById("deleteForm");
 
-// Agregar productos
 addForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const title = document.getElementById("title").value;
@@ -17,10 +16,8 @@ addForm.addEventListener("submit", async (e) => {
     },
     body: JSON.stringify({ title, price, description }),
   });
-
   addForm.reset();
 });
-// Eliminar productos
 
 deleteForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -32,16 +29,14 @@ deleteForm.addEventListener("submit", async (e) => {
     },
     body: JSON.stringify({ id }),
   });
-
   deleteForm.reset();
 });
 
-// Recibir productos
-
 socket.on("products", (data) => {
   console.log(data);
-  // productsList.innerHTML = "";
-  data.forEach((product) => {
+  productsList.innerHTML = "";
+
+  data.map((product) => {
     const card = document.createElement("div");
     card.classList.add("card");
     card.style.width = "18rem";

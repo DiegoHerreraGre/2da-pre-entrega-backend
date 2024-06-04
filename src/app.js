@@ -1,33 +1,40 @@
 import express from "express";
 import routes from "./routes/index.js";
-import viewRoutes from "./routes/views.routes.js";
-import handlebars from "express-handlebars";
 import __dirname from "./dirname.js";
-import path from "path";
+import handlebars from "express-handlebars";
 import { Server } from "socket.io";
-const PORT = 8080;
+import viewsRoutes from "./routes/views.routes.js";
+import productManager from "./productManager.js";
+
+
 const app = express();
 
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.engine("handlebars", handlebars.engine());
+app.set("views", __dirname + "/views");
+app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
-// Configuración de handlebars
-app.engine("handlebars", handlebars.engine()); // Inicia el motor del la plantilla
-app.set("views", path.join(__dirname, "views")); // Indicamos que ruta se encuentras las vistas
-app.set("view engine", "handlebars"); // Indicamos con que motor vamos a utilizar las vistas
-app.use(express.static("public"));
-
-app.use("/", viewRoutes);
+// Rutas de la api
 app.use("/api", routes);
 
-const httpServer = app.listen(PORT, () => {
-  console.log(`Servidor escuchando en el puerto ${PORT}`);
-});
+// Ruta de las vistas
+app.use("/", viewsRoutes);
 
-// Configuramos socket
+const httpServer = app.listen(8080, () => {
+  console.log("Servidor escuchando en el puerto 8080");
+});
 export const io = new Server(httpServer);
 
 io.on("connection", (socket) => {
   console.log("Nuevo usuario Conectado");
+  productManager
+    .getProducts()
+    .then((products) => {
+      socket.emit("products", products);
+    })
+    .catch((error) => {
+      console.error("Error al obtener los productos:", error);
+    });
 });

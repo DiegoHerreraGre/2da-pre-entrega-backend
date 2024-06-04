@@ -23,7 +23,6 @@ const createCart = async () => {
 };
 
 const getCartById = async (cid) => {
-  
   await getCarts();
   const cart = carts.find((c) => c.id === cid);
   return cart;
@@ -39,9 +38,8 @@ const addProductToCart = async (cid, pid) => {
   const index = carts.findIndex((cart) => cart.id === cid);
   carts[index].products.push(product);
 
-
   await fs.promises.writeFile(pathFile, JSON.stringify(carts));
-  
+
   return carts[index];
 };
 
