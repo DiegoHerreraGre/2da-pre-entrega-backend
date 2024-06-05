@@ -5,6 +5,9 @@ import handlebars from "express-handlebars";
 import { Server } from "socket.io";
 import viewsRoutes from "./routes/views.routes.js";
 import productManager from "./productManager.js";
+import clientsRoutes from "./routes/clients.routes.js";
+import { connectMongoDB } from "./config/mongoDb.config.js";
+
 
 
 const app = express();
@@ -16,11 +19,13 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
+connectMongoDB();
 // Rutas de la api
 app.use("/api", routes);
 
 // Ruta de las vistas
 app.use("/", viewsRoutes);
+app.use("/clients", clientsRoutes);
 
 const httpServer = app.listen(8080, () => {
   console.log("Servidor escuchando en el puerto 8080");
