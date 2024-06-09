@@ -8,8 +8,6 @@ import productManager from "./productManager.js";
 import clientsRoutes from "./routes/clients.routes.js";
 import { connectMongoDB } from "./config/mongoDb.config.js";
 
-
-
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
