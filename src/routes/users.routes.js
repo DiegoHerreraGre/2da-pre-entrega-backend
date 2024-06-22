@@ -1,5 +1,6 @@
 import {Router} from "express";
 import {userModel} from "../models/users.model.js";
+import {checkEmailReges} from "../middlewares/checkEmailReges.middleware.js";
 
 const router = Router();
 
@@ -14,7 +15,7 @@ router
 			res.status(500).json({message: "error", error: error.message});
 		}
 	})
-	.post(async (req, res) => {
+	.post(checkEmailReges, async (req, res) => {
 		try {
 			let {password, name, email} = req.query;
 			const newUser = new userModel({password: password, name: name, email: email});
@@ -40,7 +41,7 @@ router
 			res.status(500).json({status: "Error", msg: "Internal server error"});
 		}
 	})
-	.patch(async (req, res) => {
+	.patch(checkEmailReges, async (req, res) => {
 		try {
 			const {id} = req.query;
 			const {password, name, email} = req.query;
