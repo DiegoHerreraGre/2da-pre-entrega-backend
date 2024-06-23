@@ -3,7 +3,7 @@ import { request, response } from "express";
 export const checkEmailReges = async (req = request, res = response, next) => {
   const regex_email = new RegExp('^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$');
   try {
-    let { email } = req.body;
+    let { email } = req.query; // Si es con formulario se hace a través de un req.body pero la funcionalidad es la misma
     const email_not_ok = email.toLowerCase();
     if (!regex_email.test(email_not_ok)) {
       return res.status(400).json({ error: 'Invalid email format' });

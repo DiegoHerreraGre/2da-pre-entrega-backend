@@ -26,13 +26,13 @@ app.use("/api", routes);
 // Ruta de las vistas
 app.use("/", viewsRoutes);
 app.use("/clients", clientsRoutes);
-app.use("/users", usersRoutes);
-app.use("/movies", moviesRoutes)
 
 const httpServer = app.listen(8080, () => {
 	console.log("Servidor escuchando en el puerto 8080");
 });
 export const io = new Server(httpServer);
+
+// No entra en la evaluación pero aun así lo dejaré configurado
 
 io.on("connection", (socket) => {
 	console.log("Nuevo usuario Conectado");
