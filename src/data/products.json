@@ -2,58 +2,121 @@
   {
     "id": 1,
     "title": "Producto 1",
-    "description": "test",
+    "description": "Descripción básica del producto 1",
     "price": "100",
-    "thumbnail": [],
+    "thumbnail": ["img/product1.jpg"],
+    "status": true
+  },
+  {
+    "id": 2,
+    "title": "Producto 2",
+    "description": "Descripción extendida del producto 2 con más detalles",
+    "price": "200",
+    "thumbnail": ["img/product2.jpg"],
     "status": true
   },
   {
     "id": 3,
-    "title": "Producto 2",
-    "description": "Alguna cosa",
+    "title": "Producto 3",
+    "description": "Este es un producto de alta calidad",
     "price": "300",
-    "thumbnail": [],
+    "thumbnail": ["img/product3.jpg"],
     "status": true
   },
   {
     "id": 4,
-    "title": "Producto 30",
-    "description": "nada importante",
-    "price": "500",
-    "thumbnail": [],
+    "title": "Producto 4",
+    "description": "Producto 4 ideal para regalo",
+    "price": "400",
+    "thumbnail": ["img/product4.jpg"],
     "status": true
   },
   {
     "id": 5,
-    "title": "Producto 8",
-    "description": "hola mundo",
-    "price": "400",
-    "thumbnail": [],
+    "title": "Producto 5",
+    "description": "Producto 5 con garantía extendida",
+    "price": "500",
+    "thumbnail": ["img/product5.jpg"],
     "status": true
   },
   {
     "id": 6,
-    "title": "producto nuevo",
-    "description": "nada más",
-    "price": "5000",
-    "thumbnail": [],
+    "title": "Producto 6",
+    "description": "Producto 6 disponible en varios colores",
+    "price": "600",
+    "thumbnail": ["img/product6.jpg"],
     "status": true
   },
   {
     "id": 7,
-    "title": "producto nuevo 2",
-    "description": "nada más",
-    "price": "5000",
-    "thumbnail": [],
+    "title": "Producto 7",
+    "description": "Producto 7, el más vendido de nuestra tienda",
+    "price": "700",
+    "thumbnail": ["img/product7.jpg"],
     "status": true
   },
   {
-    "id": 7,
-    "title": "333",
-    "description": "333",
-    "price": "333",
-    "thumbnail": [],
-    "stock": "3333",
+    "id": 8,
+    "title": "Producto 8",
+    "description": "Producto 8, con envío internacional disponible",
+    "price": "800",
+    "thumbnail": ["img/product8.jpg"],
+    "status": true
+  },
+  {
+    "id": 9,
+    "title": "Producto 9",
+    "description": "Producto 9, con las mejores reseñas de los usuarios",
+    "price": "900",
+    "thumbnail": ["img/product9.jpg"],
+    "status": true
+  },
+  {
+    "id": 10,
+    "title": "Producto 10",
+    "description": "Producto 10, edición limitada",
+    "price": "1000",
+    "thumbnail": ["img/product10.jpg"],
+    "status": true
+  },
+  {
+    "id": 11,
+    "title": "Producto 11",
+    "description": "Nuevo lanzamiento exclusivo",
+    "price": "1100",
+    "thumbnail": ["img/product11.jpg"],
+    "status": true
+  },
+  {
+    "id": 12,
+    "title": "Producto 12",
+    "description": "Producto 12, perfecto para el hogar moderno",
+    "price": "1200",
+    "thumbnail": ["img/product12.jpg"],
+    "status": true
+  },
+  {
+    "id": 13,
+    "title": "Producto 13",
+    "description": "Producto 13, diseño innovador y funcional",
+    "price": "1300",
+    "thumbnail": ["img/product13.jpg"],
+    "status": true
+  },
+  {
+    "id": 14,
+    "title": "Producto 14",
+    "description": "Producto 14, la mejor opción para profesionales",
+    "price": "1400",
+    "thumbnail": ["img/product14.jpg"],
+    "status": true
+  },
+  {
+    "id": 15,
+    "title": "Producto 15",
+    "description": "Producto 15, máximo rendimiento y durabilidad",
+    "price": "1500",
+    "thumbnail": ["img/product15.jpg"],
     "status": true
   }
 ]
